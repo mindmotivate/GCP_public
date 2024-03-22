@@ -88,31 +88,53 @@
 
 ### Create a VM instance
 22. Name your instance. (we will name it instance-1)
-<img src="https://github.com/mindmotivate/GCP_private/assets/130941970/de9e8da1-746c-45f6-92c3-35931ddaefa9" width="50%" height="50%">
-<img src="https://github.com/mindmotivate/GCP_private/assets/130941970/2d7971d3-65e4-4a53-9595-a288d45674e7" width="50%" height="50%">
 
 ### Networking section
 23. Under networking settings:
     - Network tags: optional
     - Networking interfaces: default
     - Choose the default subnet.
-<img src="https://github.com/mindmotivate/GCP_private/assets/130941970/c8aa4800-cdd8-4e8d-b6b8-3f3063e03795" width="50%" height="50%">
-<img src="https://github.com/mindmotivate/GCP_private/assets/130941970/2849c5e6-ab8b-4b65-9461-99f386cc5c8b" width="50%" height="50%">
-
+    - 
+**Internal IP Assignment**: Select the "Ephemeral automatic" option for the primary internal IP address.
 ### Choose internal IP type (we will choose ephemral automatic)
 24. Select one of the following for primary internal IP:
     - Ephemeral automatic
     - Ephemeral custom
     - Reserve static internal IP address (will cost more)
 
-For External Ip choose "none"
+**External IP Assignment**: Choose the "None" option for the external IP address.
+al Ip choose "none"
 
 ### Click "create" and wait for creation
 25. Wait for its creation.
-<img src="https://github.com/mindmotivate/GCP_private/assets/130941970/ec162812-6c92-4f79-a062-4217a4f65c9c" width="50%" height="50%">
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/020ef630-349a-4db6-824b-0228cfd5a77b)
+
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/7c274698-663e-470b-a449-7d179ab02f85)
+
 
 ### Create another instance
-26. Name your instance. (we will name it instance-2)
+
+3. **Create VM Instance**: Name the VM instance "instance-2" and select the desired zone (in this case, "us-central1-a").
+
+4. **Networking Settings**: Under networking settings, choose the default subnet and networking interfaces.
+
+5. **Internal IP Assignment**: Select the "Ephemeral automatic" option for the primary internal IP address.
+
+6. **External IP Assignment**: Assign the external IP address named "static-ip-2" (35.209.191.158) to the instance.
+
+7. **Finalization**: Click "Create" and wait for the VM instance to be created.
+
+
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/ecab6e94-aceb-46fd-8163-5d10696e6cf7)
+
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/a29f4b0b-0ed4-4ded-96ed-c0273180ce1b)
+
+
+
 
 ![image](https://github.com/mindmotivate/GCP_private/assets/130941970/2980d2a8-4b42-4b4d-8233-e135a4d8b44b)
 
@@ -122,7 +144,7 @@ For External Ip choose "none"
 
 
 
-### Create another instance
+### Create another instance (Instance 3)
 
 Create VM Instance**: Name the VM instance "instance-3" and select the desired zone (in this case, "us-central1-a").
 
