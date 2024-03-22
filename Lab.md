@@ -52,6 +52,7 @@
 13. Choose the option to "reserve static address".
 14. Click "reserve external address".
 <img src="https://github.com/mindmotivate/GCP_private/assets/130941970/63800aa3-4a5d-49a0-a7eb-a3518ebb478b" width="70%" height="70%">
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/387a42b2-5a63-4df9-aa6e-4118c0a39eae)
 
 ### Name your static IP address
 15. Provide a name for your static IP address.
