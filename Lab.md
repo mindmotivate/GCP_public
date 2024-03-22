@@ -127,3 +127,83 @@ For External Ip choose "none"
 
 
 
+| IP Name        | IP Address     | Creation Method   | Selection in Console | Type     | Instance    |
+|----------------|----------------|-------------------|----------------------|----------|-------------|
+| static-ip-1    | 35.208.169.144 | Manual Reservation| Static               | Static   | instance-3  |
+| static-ip-2    | 34.117.134.57  | Manual Reservation| Static               | Static   | Unassigned  |
+| unnamed-ip     | 35.209.191.158 | Automatic         | Ephemeral(automatic) | Ephemeral| instance-2  |
+| Not assigned   | N/A            | N/A               | N/A                  | N/A      | instance-1  |
+
+
+
+# A tale of instances in the Lab...
+
+## instance-1
+
+Initially, the instance did not have any specific IP address assigned. It is running in the us-central1-a zone and currently has an internal IP address of 10.128.0.2. (Internal IP addresses for VM instances in Google Cloud Platform (GCP) are automatically assigned by GCP)
+
+
+## instance-2
+
+Initially, the instance did not have any specific IP address assigned. It is running in the us-central1-a zone and currently has an internal IP address of 10.128.0.3 and an external IP address of 35.209.191.158. (Internal IP addresses for VM instances in Google Cloud Platform (GCP) are automatically assigned by GCP)
+
+## instance-3
+
+Initially, the instance did not have any specific IP address assigned. It is running in the us-central1-a zone and currently has an internal IP address of 10.128.0.4 and an external IP address of 35.208.169.144. (Internal IP addresses for VM instances in Google Cloud Platform (GCP) are automatically assigned by GCP)
+
+## The Results:
+### In simple terms, you are seeing the following:
+
+1. **instance-1**: This instance is running in the us-central1-a zone and has an internal IP address of 10.128.0.2. It doesn't have an external IP address assigned. It is within the same VPC network.
+
+2. **instance-2**: Another instance also running in the us-central1-a zone. It has an internal IP address of 10.128.0.3 and an external IP address of 35.209.191.158. This instance is directly accessible from the internet.
+
+3. **instance-3**: This instance, also in the us-central1-a zone, has an internal IP address of 10.128.0.4 and an external IP address of 35.208.169.144. This instance is directly accessible from the internet.
+
+***Note: External IP addresses are not mandatory for every VM instance because not all instances require direct access from the internet. 
+ **Internal Communication**: Many VM instances within a cloud environment need to communicate with each other or with other resources within the same Virtual Private Cloud (VPC) network. In such cases, internal IP addresses are sufficient for communication, and external IP addresses are unnecessary.
+**Security Considerations**: Exposing VM instances directly to the internet through external IP addresses can introduce security risks if proper security measures are not implemented. Therefore, in scenarios where direct internet access is not required, it's often recommended to avoid assigning external IP  **Cost Optimization**: External IP addresses may incur additional costs, especially if they are reserved or used for extended periods. By not assigning external IP addresses to every VM instance, organizations can optimize costs, especially for instances that do not require internet connectivity.***
+
+# A tale of two IP addresses.....
+
+## IP Address 1
+- Initially, no specific IP address was manually assigned or reserved, indicated by "none."
+- A static IP address was manually created and reserved by the user within the Google Cloud Platform (GCP) console.
+- This static IP address was then manually assigned to a specific virtual machine (VM) instance within the GCP environment.
+
+## IP Address 2
+- Initially, no specific IP address was manually assigned or reserved, indicated by "none."
+- A static IP address was manually created and reserved by the user within the Google Cloud Platform (GCP) console.
+- This static IP address was not assigned to any specific resource within the GCP environment.
+
+
+## The Results:
+### In simple terms you are seeing the following:
+
+1. **static-ip-1**: This is a fixed address (35.208.169.144) that anyone can use to access something in Google's cloud in the central region. It's like having a permanent phone number for a specific place. Currently, it's being used by a computer named "instance-3."
+
+2. **static-ip-2**: Another fixed address (34.117.134.57) available for anyone to use, but it's not currently assigned to anything. It's reserved, like a phone number not yet connected to a phone.
+
+3. **Unnamed IP**: This address (35.209.191.158) is also available for anyone to use, but it's temporary. It's currently being used by a computer named "instance-2" in the central region. Think of it like a phone number that changes each time you make a call from a specific phone.
+
+Nomenclature reminder:
+- **Static**: Fixed address that doesn't change.
+- **Ephemeral**: Temporary address that may change over time.
+
+
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/098d82d2-68c8-409b-b22d-f7f1017484d4)
+
+# Lab Recap
+## Importance of External IP Addresses:
+- **Connectivity:** External IP addresses allow devices or services to communicate over the internet, enabling accessibility from anywhere.
+- **Identification:** They uniquely identify your system on the internet, facilitating data routing.
+- **Scalability:** On-the-fly allocation provides flexibility and scalability, adapting to changing demands.
+- **Resource Management:** Pre-allocating IPs ensures availability and efficient resource utilization.
+
+- **Advance Provisioning:** Pre-allocating IPs ensures availability and allows for better planning and resource management.
+- **Dynamic On-the-Fly Allocation:** On-the-fly allocation provides flexibility and scalability, adapting to changing demands in real-time.
+
+In summary, whether you're provisioning external IPs in advance or dynamically assigning them on-the-fly, they play a crucial role in enabling connectivity, identification, scalability, and efficient resource management within your network infrastructure.
+
+
