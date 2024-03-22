@@ -123,7 +123,23 @@ For External Ip choose "none"
 
 
 ### Create another instance
-26. Name your instance. (we will name it instance-3)
+
+Create VM Instance**: Name the VM instance "instance-3" and select the desired zone (in this case, "us-central1-a").
+
+4. **Networking Settings**: Under networking settings, choose the default subnet and networking interfaces.
+
+5. **Internal IP Assignment**: Select the "Ephemeral automatic" option for the primary internal IP address.
+
+6. **External IP Assignment**: Assign the external IP address named "static-ip-1" (35.208.169.144) to the instance.
+
+7. **Finalization**: Click "Create" and wait for the VM instance to be created.
+
+
+***You should see the follwing in the console:***
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/ea2f91f4-0a2c-4878-b458-6916e47e083d)
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/e08462ee-c7e8-4f57-9ce0-25b76b1e65a2)
 
 
 
