@@ -21,8 +21,10 @@
 
 ### View default network details
 6. Locate and click on the "default" network to reveal its details.
+<img src="https://github.com/mindmotivate/GCP_private/assets/130941970/3082c6d7-3121-42a2-98e4-562293a86a79" width="30%" height="30%">
+<img src="https://github.com/mindmotivate/GCP_private/assets/130941970/1cfbc3fd-a80f-4734-a1cf-ccb7b9977e9b" width="50%" height="50%">
 
-<img src="https://github.com/mindmotivate/GCP_private/assets/130941970/1cfbc3fd-a80f-4734-a1cf-ccb7b9977e9b" width="70%" height="70%">
+
 
 ### Subnet creation mode: auto-subnets
 7. Note the subnet creation mode, which should be set to "auto-subnets".
@@ -35,16 +37,21 @@
 
 ### View provided subnets and their regions
 10. Observe the list of provided subnets and their respective regions.
+<img src="https://github.com/mindmotivate/GCP_private/assets/130941970/6f2ac4a4-00e1-4c27-aa42-ff8c4203d316" width="50%" height="50%">
+<img src="https://github.com/mindmotivate/GCP_private/assets/130941970/353465dd-386d-4c4b-ab4b-dcc3b028a31b" width="100%" height="100%">
 
 ### Check for static IP addresses
 11. Note that there are currently no static IP addresses assigned.
+<img src="https://github.com/mindmotivate/GCP_private/assets/130941970/23bbe377-f58d-4b7c-8b0d-355db46588d6" width="50%" height="50%">
 
 ### View Firewall rules, Routes, Network erring, and Private service connection.
+<img src="https://github.com/mindmotivate/GCP_private/assets/130941970/e0881e79-bf56-433b-a8f3-9cdccf1389c0" width="50%" height="50%">
 
 ### CREATE A STATIC IP
 12. Click on "External IP addresses" (none should exist at this time).
 13. Choose the option to "reserve static address".
 14. Click "reserve external address".
+<img src="https://github.com/mindmotivate/GCP_private/assets/130941970/63800aa3-4a5d-49a0-a7eb-a3518ebb478b" width="70%" height="70%">
 
 ### Name your static IP address
 15. Provide a name for your static IP address.
