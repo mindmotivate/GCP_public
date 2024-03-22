@@ -81,6 +81,14 @@
 ### Wait for the static IP address to be created.
 <img src="https://github.com/mindmotivate/GCP_private/assets/130941970/5ec2fe65-feac-49b4-bf0d-0556ecd2cc16" width="50%" height="50%">
 
+## Results:
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/5eeac1d5-9c51-4305-bc85-e7e935fed1e5)
+
+
+
+
+
 ### Compute Engine
 21. Navigate to Compute Engine.
 
@@ -114,7 +122,7 @@ al Ip choose "none"
 ![image](https://github.com/mindmotivate/GCP_private/assets/130941970/7c274698-663e-470b-a449-7d179ab02f85)
 
 
-### Create another instance
+### Create another instance (Instance 2)
 
 3. **Create VM Instance**: Name the VM instance "instance-2" and select the desired zone (in this case, "us-central1-a").
 
