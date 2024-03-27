@@ -24,3 +24,11 @@ GCP Load Balancing: Global Traffic Distribution with a Single IP Address
 Within Google Cloud Platform (GCP), Google Cloud Load Balancing (GCLB) is a managed service that acts as a global or regional virtual traffic director 
 for your web applications or services. It sits in front of a pool of backend instances (typically virtual machines in Compute Engine or containers in 
 Kubernetes Engine) and efficiently distributes incoming traffic across them.
+
+
+
+
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/68850e6d-19aa-452a-ac32-1d6f26c0c51c)
+
+
