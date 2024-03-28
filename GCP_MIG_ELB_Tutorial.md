@@ -144,30 +144,63 @@ cat <<EOF > /var/www/html/index.html
 EOF
 ```
 -Go ahead select "Create"
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/4ff991d1-49ae-4022-94d7-a38a93d63371)
+
 
 9. **Create a Managed Instance Group (MIG) for "us-central1" Region:**
    - Navigate to "Compute Engine" > "Instance groups" in the Cloud Console.
-   - Click on "+ CREATE INSTANCE GROUP" at the top.
-   - Name the MIG as "mig-web-central1" for the "us-central1" region.
 
-10. **Create a Managed Instance Group (MIG) for "us-west1" Region:**
+   - ![image](https://github.com/mindmotivate/GCP_private/assets/130941970/702daa0d-4373-4513-9b4a-3e49e5a4527f)
+
+   - ![image](https://github.com/mindmotivate/GCP_private/assets/130941970/bef4ab78-fb98-448f-b5d9-f4b8cfb6407c)
+
+   - Click on "+ CREATE INSTANCE GROUP" at the top.
+  
+   - Note: Alternatively you can simply select the following button from the top of instance template screen:
+  
+   - ![image](https://github.com/mindmotivate/GCP_private/assets/130941970/ca8bec7b-22ef-4c4d-adce-701fdb9145ed)
+
+   - Name the MIG "mig-web-central1" for the "us-central1" region.
+  
+    Note: Although, not required for this tutorial, you may opt for "Autoscaling" and set the desired minimum and maximum nunmber of instances
+   ![image](https://github.com/mindmotivate/GCP_private/assets/130941970/1a18e754-0a46-4bde-a6a4-a29e0253ceae)
+
+   Note: Although, not required for this tutorial, you may opt for "Health Checks" & "Signals" respectively
+
+   -Click "Create" after all selections have been made
+   
+   ![image](https://github.com/mindmotivate/GCP_private/assets/130941970/93099d81-7dad-42a9-8246-b162e2bb4cdb)
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/91ae4024-798e-4df1-8ac5-fb65a503866f)
+
+**Test one of your instances by utlizing its SSH connection (ping 8.8.8.8)***
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/2d01682f-81b1-40e2-b712-941cb7e611bf)
+
+**Test one of your instances by copying its external IP address into your browser (be sure to inlcude "http://" prefix)***
+
+
+11. **Create a Managed Instance Group (MIG) for "us-west1" Region:**
     - Repeat the process to create another managed instance group named "mig-web-west1" for the "us-west1" region.
 
-11. **Create a Backend Service:**
+
+
+
+12. **Create a Backend Service:**
     - Navigate to "Load balancing" > "Backend services" in the Cloud Console.
     - Click on "+ CREATE BACKEND SERVICE" at the top.
     - Name the backend service as "mig-backend".
     - Choose "Instance group" as the backend type.
 
-12. **Create a Backend Service for "us-west1" Region:**
+13. **Create a Backend Service for "us-west1" Region:**
     - Repeat the process to create another backend service named "mig-backend-west1" for the "us-west1" region.
 
-13. **Create a Global HTTP(S) Load Balancer:**
+14. **Create a Global HTTP(S) Load Balancer:**
     - Go to "Load balancing" in the Cloud Console.
     - Click on "+ CREATE LOAD BALANCER" at the top.
     - Choose "HTTP(S) Load Balancing" as the load balancer type.
 
-14. **Testing the Load Balancer:**
+15. **Testing the Load Balancer:**
     - Once the load balancer is created, obtain the IP address assigned to it.
     - Open a web browser and navigate to the IP address of the load balancer.
     - Continuously refresh the browser to simulate traffic.
