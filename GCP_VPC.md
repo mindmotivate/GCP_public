@@ -41,6 +41,7 @@ These address blocks are not routable on the public internet, meaning devices wi
 This is a key benefit for network security and allows for efficient use of IP addresses within private networks.
 
 Use ipconfig (bash) to find your IP address for your machine (It should start with 192 for private network)
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/8a213795-2a5f-4d6d-8478-6276bf458684)
 
 In GCP we will use: 10.101-254.0.0/24
 
@@ -129,3 +130,38 @@ In GCP we will use: 10.101-254.0.0/24
 ![image](https://github.com/mindmotivate/GCP_private/assets/130941970/edd033a7-6dcf-48b5-8224-4b555e563735)
 
 ### Next, we will create a VM with a user startup script
+
+8. **Create VM Instance with Startup Script:**
+   - Navigate to "Compute Engine" > "VM Instances" in the Cloud Console.
+   - Click on "+ CREATE INSTANCE" at the top.
+  ![image](https://github.com/mindmotivate/GCP_private/assets/130941970/12d4e15a-95dd-4cd2-be54-67418242b4c8)
+
+   - 
+   - Name the instance as "webapp-instance1".
+
+- Ensure that you select the VPC you created and that you choose the subnet in the correct region
+
+-DO NOT CHECK FIREWALL OPTIONS
+-REMOVE THE DEFAULT NETWORK INTERFACES IF THEY ARE SELECTED (THIS WILL CAUSE YOU TO HAVE A NIC CREATE DNINTHE DEFAULT VPC)
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/89b428b0-92d8-4c17-8544-e19a5d7b85e3)
+-ENSURE THAT YOU ARE SELCTINH THE CORRECT VPC AN P HERE:
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/093ffa99-d28a-4074-a481-d3f322c31986)
+
+
+
+-Scroll down to the "Management" section and paste your startup script in the Automation text box
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/e2680e03-043a-447f-8158-d5ac72bcb480)
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/ffbb143d-4853-4fee-928f-e0bff465a5ff)
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/79eb1039-23bb-4ac9-940a-cc27d4e7a1dc)
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/bd0b1301-08b4-4c55-a8c6-250b0b7f590d)
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/5a1e8e7d-d711-421c-875b-482749af4161)
+
+Note: This instance will use the firewall from the VPC
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/f0f5fb47-b57d-4a54-b0b1-8886dee65089)
+
+-Create
+
