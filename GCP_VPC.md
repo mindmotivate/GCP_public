@@ -76,11 +76,19 @@ In GCP we will use: 10.101-254.0.0/24
    - While still in the "VPC networks" section, click on "Firewall rules".
    - 
    - You will select "edit" next to "application-vpe-allow-custom"
+    ![image](https://github.com/mindmotivate/GCP_private/assets/130941970/8757c039-c86a-4c11-86df-91e7e9f811be)
+
+   - Choose "Specified protocals and ports"
+   - Select "TCP"
+   - Type Port: "80"
   ![image](https://github.com/mindmotivate/GCP_private/assets/130941970/608fcefc-7dbc-4421-84a9-48d7b86b1413)
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/792a9a2f-8892-41cb-9796-ebe86721eb20)
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/7cc8dfb7-4c3a-4863-81d6-f65a9ad7f855)
+
 * Notice how this custom rule goes to both subnets
    56:34
   - select "application-vpe-allow-custom"
-  - - Note: In a normal production environment, you will NOT use icmp: "PING"
+  - - Note: In a normal production environment, you will NOT use icmp: "PING" (Ping can be used by hackers to discover hosts on a network)
    - select "application-vpe-allow-rdp"
    - select "application-vpe-allow-ssh"
  
@@ -94,5 +102,30 @@ In GCP we will use: 10.101-254.0.0/24
    - PRAY. then press "create"
   ![image](https://github.com/mindmotivate/GCP_private/assets/130941970/e9fbc611-89e4-469f-a558-316d2874f4a5)
 
-   - 
-     51:45
+   - After you have created your VPC, naviage to Firewall Rules and click "Create Firewall Rules"
+   - ![image](https://github.com/mindmotivate/GCP_private/assets/130941970/c48aee9f-575e-4320-a2fa-7cbe0ea979dc)
+   - We will create a seperate rule for 443
+   - Name; "secure-443"
+   - Description: "Secure Connection"
+   - Logs: "On"
+   - for "Direction of Traffic" choose: "Ingress"
+   - NEVER TOUCH EGRESS
+   - Targets: "Specified target tags"
+   - Target tags: "default"
+   - Add Source IPV4 ranges: 10.237.1.0/24
+   - ![image](https://github.com/mindmotivate/GCP_private/assets/130941970/46787fe4-948d-478a-9122-5c1e8c592d48)
+
+   - Note: refer to your document to ensure youhave the correct Ip ranges
+   - Note: for the purposes of this turorial we are only applying the "secure-443" rule to one of our Ip ranges
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/9b0974d0-b755-4d9d-a4f4-760f63a6ad0f)
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/79b7f342-8a49-4542-88a8-d93b9b05843b)
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/c4385494-61b0-4a26-ba2e-f6b893f73e29)
+
+   -Click "Create"
+
+  Now that our rule has been createed, lets say you decide you ant to remove "icmp"
+  You can simply click on the icmp rule and choose "delete firewall rule"
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/d1cf4fee-5077-48e2-92ca-38628cac6232)
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/edd033a7-6dcf-48b5-8224-4b555e563735)
+
+### Next, we will create a VM with a user startup script
