@@ -81,12 +81,80 @@
 
 ### 3. Create Custom VPCs and Subnets:
 - In "myfirstproject":
+- ![image](https://github.com/mindmotivate/GCP_private/assets/130941970/91d91334-1888-4b36-ac08-69aaee949cb5)
+
   - Navigate to the VPC network section.
-  - Create a new VPC named "my-new-vpc" with the range "10.133.0.0/16".
+  - ![image](https://github.com/mindmotivate/GCP_private/assets/130941970/68123a52-257c-4ab7-8062-f04a33eb147b)
+
+### Create VPC Network
+Click on 'CREATE VPC NETWORK' near the top of the page. You will go to the creation page.
+Name your VPC and give it a description (optional)
+Under 'VPC network ULA internal IPv6 range' section, leave that 'disabled'
+Under 'Subnets' section, leave it checked on custom.
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/2b0e951e-9acd-4c1e-a111-143573ecc134)
+
+  -![image](https://github.com/mindmotivate/GCP_private/assets/130941970/5deca9df-b8e4-4e09-a01f-036eef0f07db)
+.
+  - ![image](https://github.com/mindmotivate/GCP_private/assets/130941970/507d1ae7-95bb-46ec-b11b-4413d01fc368)
+
   - Create a subnet named "asia-northeast1" with the range "10.133.1.0/24".
-- In "network-pse":
-  - Create another custom VPC named "custom-vpc" with the range "10.136.0.0/16".
-  - Create a subnet named "us-central1" with the range "10.136.1.0/24".
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/c93da024-6986-47a7-94b3-9dcfe5a8c3dc)
+
+Under 'Firewall rules' section, there is a list of rules as depicted below. Let's check the 'allow-icmp' to allow your network to return pings. Check the 'allow-ssh' to allow an SSH connection to your network.
+Under 'Dynamic routing mode', leave it checked on 'Regional' since we are using a single region for our VPC and VM.
+Click on 'Create'
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/8d153956-850a-4d30-b9ec-49b5ce6a3c69)
+
+
+Do not touch the 'Create Secondary IPV4 Range' button.
+Under 'Private Google Access', click 'On'.
+Under 'Flow logs', click 'On'. We don't have to configure logs
+Under 'Hybrid subnet'. leave that checked at 'Off'.
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/a2c6ad49-dff8-48b3-bfe8-38f90b66617f)
+
+
+
+
+### Creating Custom VPCs and Subnets:
+
+1. **Navigate to the VPC Network Section:**
+    - Access the "network-pse" project.
+    - Go to the VPC network section.
+
+2### Creating Custom VPCs and Subnets
+
+1. **Navigate to the VPC Network Section:**
+    - Access the "network-pse" project.
+    - Go to the VPC network section.
+
+2. **Create VPC Network:**
+    - Locate and click on 'CREATE VPC NETWORK' near the top of the page to initiate VPC creation.
+    - Name your VPC as "custom-vpc" and provide an optional description.
+    - Ensure the 'VPC network ULA internal IPv6 range' section remains disabled.
+    - Keep the 'Subnets' section set to custom.
+
+3. **Create Subnets:**
+    - Create a subnet named "us-central1" with the range "10.136.1.0/24".
+
+4. **Set Firewall Rules:**
+    - Configure firewall rules according to your network security requirements.
+
+5. **Set Dynamic Routing Mode:**
+    - Choose the appropriate dynamic routing mode based on your network setup.
+
+6. **Final Configuration:**
+    - Review the settings and click on 'Create'.
+    - Avoid interactions with the 'Create Secondary IPV4 Range' button unless necessary.
+    - Ensure 'Private Google Access' is turned 'On' if required.
+    - Activate 'Flow logs' if needed for monitoring purposes.
+    - Adjust 'Hybrid subnet' settings as necessary.
+
+Ensure that each step is performed accurately to create the "custom-vpc" within the "network-pse" project.
+
+
 
 ### 4. Create VMs:
 - In "myfirstproject":
