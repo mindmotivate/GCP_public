@@ -58,9 +58,12 @@ Partner Interconnect and Peering provide alternative options for connecting your
 - Peering is limited to communication between VPC networks and may require additional setup for routing and network configurations.
 
 
+Select your project (or choose an existing one)
 
 Create VPC
+
 ![image](https://github.com/mindmotivate/GCP_private/assets/130941970/6f59a811-634b-47c2-8936-302d7400eb7a)
+
 ![image](https://github.com/mindmotivate/GCP_private/assets/130941970/21b94ef2-04fc-41bc-a8e9-1007c22ed63d)
 
 Name 
@@ -91,6 +94,59 @@ Dynamic Routing Mode
 Ensure both VPCs wer created sucessfully
 ![image](https://github.com/mindmotivate/GCP_private/assets/130941970/1fcd4dfc-5bff-41d4-a8ff-1d6737d70bf7)
 
+➤ Create a set of Firewall Rules (for each of your two networks)
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/b6d75c90-b7a6-4978-96fb-bd74d3088d95)
+
+Name: rule-custom-vpc
+Description: rule-custom-vpc 
+Logs:On
+Network: custom-vpc-1
+Direction of traffic: Ingress
+Targets: All instances in the network
+Source Filter: IP Ranges
+Source Ip ranges: 0.0.0.0/0
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/5cfd07cc-a397-4f17-8f03-0348be7b58ba)
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/67050075-ecac-4406-9cd3-6befac828ef1)
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/05ebf35f-4121-4c0d-9f41-1458f78ccb90)
+
+Ports & Protocals
+-Specified protocals and ports
+-tcp: 22
+-other protocals: icmp
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/e60105d3-41c2-4972-b0f4-de177f908561)
+
+
+
+Name: rule-custom-vpc-2
+Description: rule-custom-vpc 
+Logs:On
+Network: custom-vpc-2
+Direction of traffic: Ingress
+Targets: All instances in the network
+Source Filter: IP Ranges
+Source Ip ranges: 0.0.0.0/0
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/1c5d2eb5-eb93-4a66-a82d-d7f401bb2043)
+
+
+Ports & Protocals
+-Specified protocals and ports
+-tcp: 22
+-other protocals: icmp
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/93ccbdeb-40f4-4cdd-9e26-536d02af7d56)
+
+Press Create
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/91853d55-b09c-49ad-9bd0-5809c2021701)
+
+Ensure your created firewall rues were applied correctly
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/02089ea1-23af-443a-b997-dda81db60222)
 
 
 ➤ Create Instance Each using one VPC
