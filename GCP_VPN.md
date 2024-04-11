@@ -149,9 +149,84 @@ Ensure your created firewall rues were applied correctly
 ![image](https://github.com/mindmotivate/GCP_private/assets/130941970/02089ea1-23af-443a-b997-dda81db60222)
 
 
-➤ Create Instance Each using one VPC
+➤ Create Instance Each using one VPC (custom-ins-1)
+
+Navigate to compute engine and select "VIM-instance"
+
+we will create our custim instance in "us-central-1" where our 1st VPC is located
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/3613bdfb-4933-4f84-b393-8562fd098aed)
+
+In the network interfaces section choose your "custom-vpc-1" and its associated subnet
+
+Click "Create"
+
+
+
+➤ Create Another Instance using one VPC (custom-ins-2)
+
+Navigate to compute engine and select "VIM-instance"
+
+we will create another custom instance in "us-east-1" where our 2nd VPC is located
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/3613bdfb-4933-4f84-b393-8562fd098aed)
+
+In the network interfaces section choose your "custom-vpc-2" and its associated subnet
+
+Click "Create"
+
+Ensure both instances are created and ready
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/b8dc9a47-9ca2-406d-b34a-9fbb6d5e23b8)
+
 
 ➤ Verify Connectivity
+
+Use SSH to access the first instance: 
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/2ee96156-8f67-4391-acb4-97e77507d552)
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/5b09996a-1862-48e9-8db3-a6965b03c296)
+
+Once accessed, attempt to ping (this means our firewall rule is working)
+
+### ACCESS INSTANCE 2 FROM INSTANCE 1 VIA EXTERNAL IP
+
+use "ping command" along with the external ip of instance 2
+ping -c 3 (this command specified 3 pings exactly)
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/a54e7c7b-5f93-49dc-977f-4dc8278ba141)
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/1fd847e4-2cbc-498d-93e6-7d13190fb09e)
+
+### ACCESS INSTANCE 2 FROM INSTANCE 1 VIA INTERNAL IP
+
+Try to ping the internal Ip address of your second instance:
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/844c5092-2aa1-4171-949c-d6e986bd6fb2)
+
+Note: You should not be sucessful due to our configuration
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/d2d4ef48-90f2-469c-8c2d-6291ee13efcc)
+
+
+
+### ACCESS INSTANCE 1 FROM INSTANCE 2 VIA EXTERNAL IP
+
+Now attempt SSH with the second instance via the external Ip addess
+
+You should be sucessful
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/2235d6a0-1a15-4d89-92bd-bf92ec35f244)
+
+### ACCESS INSTANCE 1 FROM INSTANCE 2 VIA INTERNAL IP
+
+However if we try to access the internal IP we should NOT have access
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/9a3d71a6-8156-45c8-8ecf-a1d119317997)
+
+
+
 
 ➤ Create Two VPN one for each Network
 
