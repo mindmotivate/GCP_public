@@ -230,6 +230,56 @@ However if we try to access the internal IP we should NOT have access
 
 ➤ Create Two VPN one for each Network
 
+Use the CLI:
+
+```bash
+gcloud compute target-vpc-gateways create <VPN_NAME> --network=<NETWORK_NAME> --region=<REGION>
+```
+
+use your vpnname: (myvpn-1)
+network name: (custom-vpc-1)
+Obtain your subnet region (us-central1)
+
+```bash
+gcloud compute target-vpc-gateways create myvpn-1 --network custom-vpc-1 --region us-central1
+```
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/baf11be4-02dc-4b57-a8cc-167020808ce4)
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/832f02d7-65df-4775-a098-aacca9abb3ee)
+
+Press Enter
+
+You should recieve a confirmation message:
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/6e50cdac-68ee-43a5-8d59-3785dcd197f2)
+
+Now create a static Ip that can be linked to your VPN
+
+```bash
+gcloud compute addresses create <STATIC_IP_NAME> --region=<REGION>
+```
+static ip name: (myvpn-1-ip)
+region: (us-central1)
+
+```bash
+gcloud compute addresses create myvpn-1-ip --region us-central1
+```
+Press Enter
+
+Await your confirmation message:
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/e115a1d0-959d-4a31-8b51-b48ce023ad43)
+
+Use this command to list all of the ip addesses in your project
+
+```bash
+gcloud compute addresses list
+```
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/640d70e9-3955-47d8-a691-cfd50a242357)
+
+
+
 ➤ Create Static IP one for each Network
 
 ➤ Set Forwarding Rules for each VPN Gateway
