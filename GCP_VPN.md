@@ -332,6 +332,8 @@ gcloud compute vpn-tunnels list
 
 ➤ Create Route for Each Network
 
+***The routes you create in this scenario are static routes within your VPC networks. Their purpose is to direct traffic between your VPCs through the established VPN tunnels***
+
 
 gcloud compute routes create <ROUTE_NAME> \
   --network <SOURCE_NETWORK> \
@@ -344,9 +346,10 @@ gcloud compute routes create <ROUTE_NAME> \
 route name : myroute1
 network: custom-vpc-1
 next hop vpn tunnel: my-vpn-1-tunnel
-next hop vpn tunnel-region:us-cetral1
+next hop vpn tunnel-region:us-central1
 detination range (2nd network subnet): ip range fir ua-east-1 with /24
 
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/fa446d49-0448-4f8b-84e2-bcedb66dc6bc)
 
 
 gcloud compute routes create <ROUTE_NAME> \
@@ -360,8 +363,45 @@ gcloud compute routes create <ROUTE_NAME> \
 route name : myroute2
 network: custom-vpc-2
 next hop vpn tunnel: my-vpn-2-tunnel
-next hop vpn tunnel-region:us-central1
-detination range (2nd network subnet): ip range fir ua-east-1 with /24
+next hop vpn tunnel-region:us-east1
+detination range (2nd network subnet): ip range second us-central-1 with /24
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/a3ac3e63-4271-426a-9890-1eeb0106f660)
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/cc225eda-70e8-404a-a6d6-8dc86330f521)
+
+
+
+
+
+➤ Test via SSH connections
+
+
+
+copy the internal ip of your second instance
+
+ssh into your first instance
+
+use: ping -c 5 (paste copied ip)
+
+press enter and observe pings
+
+
+
+
+copy the internal ip of your first instance
+
+ssh into your second instance
+
+use: ping -c 5 (paste copied ip)
+
+press enter and observe pings
+
+
+
+
+
+
 
 
 
@@ -380,6 +420,28 @@ gcloud compute addresses create my-static-ip --region <REGION_FIRST_GATEWAY_SUBN
 gcloud compute addresses create my-static-ip-2 --region <REGION_SECOND_GATEWAY_SUBNET>
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### Bash Commands For VPN Tunnels:
 
