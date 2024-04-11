@@ -254,6 +254,8 @@ You should recieve a confirmation message:
 
 ![image](https://github.com/mindmotivate/GCP_private/assets/130941970/6e50cdac-68ee-43a5-8d59-3785dcd197f2)
 
+➤ Create Static IP one for each Network
+
 Now create a static Ip that can be linked to your VPN
 
 ```bash
@@ -278,15 +280,127 @@ gcloud compute addresses list
 ```
 ![image](https://github.com/mindmotivate/GCP_private/assets/130941970/640d70e9-3955-47d8-a691-cfd50a242357)
 
+Note: the ip adress listed is only for the VPN (there should be no subnets listed)
 
 
-➤ Create Static IP one for each Network
 
-➤ Set Forwarding Rules for each VPN Gateway
+Region: us-central1
+External Ip:34.69.63.219
+Gateway: myvpn-1
 
-➤ Create Tunnel between each Gateway
+➤ Set Forwarding Rules for each VPN Gateway (Not required unless using UDP traffic)
+
+➤ Create Tunnels for each vpc
+
+Tunnel for vpc-1
+
+vpn tunnel name: myvpn-1-tunnel
+static ip of the second gateway: 35.231.10.189 (example)
+regon of the first gateway subnet: us-central
+ike version 2
+shared secret: demotunnle (example)
+target vpn gateway: myvpn-1
+local traffic selector: 0.0.0.0/0
+remote traffic selector: 0.0.0.0/0
+
+Press Enter
+Await Confirmation Message
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/513f1a02-584e-4198-bef5-1cabb796c22f)
+
+
+Tunnel for vpc-2
+
+vpn tunnel name: myvpn-2-tunnel
+static ip of the second gateway: 34.69.63.219 (example)
+regon of the first gateway subnet: us-central
+ike version 2
+shared secret: demotunnle (example)
+target vpn gateway: myvpn-2
+local traffic selector: 0.0.0.0/0
+remote traffic selector: 0.0.0.0/0
+
+
+![image](https://github.com/mindmotivate/GCP_private/assets/130941970/ea797b9b-f2a7-401b-af33-9b4ce41a3d77)
+
+Use the follwing command to see you vpn-tunnels list
+
+```bash
+gcloud compute vpn-tunnels list
+```
+
 
 ➤ Create Route for Each Network
 
 
+gcloud compute routes create <ROUTE_NAME> \
+  --network <SOURCE_NETWORK> \
+  --next-hop-vpn-tunnel <TUNNEL_NAME> \
+  --next-hop-vpn-tunnel-region <REGION_FROM_VPN_TUNNEL_LIST> \
+  --destination-range <DESTINATION_NETWORK_SUBNET>
 
+
+
+route name : myroute1
+network: custom-vpc-1
+next hop vpn tunnel: my-vpn-1-tunnel
+next hop vpn tunnel-region:us-cetral1
+detination range (2nd network subnet): ip range fir ua-east-1 with /24
+
+
+
+gcloud compute routes create <ROUTE_NAME> \
+  --network <SOURCE_NETWORK> \
+  --next-hop-vpn-tunnel <TUNNEL_NAME> \
+  --next-hop-vpn-tunnel-region <REGION_FROM_VPN_TUNNEL_LIST> \
+  --destination-range <DESTINATION_NETWORK_SUBNET>
+
+
+
+route name : myroute2
+network: custom-vpc-2
+next hop vpn tunnel: my-vpn-2-tunnel
+next hop vpn tunnel-region:us-central1
+detination range (2nd network subnet): ip range fir ua-east-1 with /24
+
+
+
+
+
+
+
+
+### Bash Commands For Static Ip:
+
+```bash
+# Create static IP (my-static-ip) in REGION_FIRST_GATEWAY_SUBNET
+gcloud compute addresses create my-static-ip --region <REGION_FIRST_GATEWAY_SUBNET>
+
+# Create static IP (my-static-ip-2) in REGION_SECOND_GATEWAY_SUBNET
+gcloud compute addresses create my-static-ip-2 --region <REGION_SECOND_GATEWAY_SUBNET>
+
+```
+
+### Bash Commands For VPN Tunnels:
+
+```bash
+# Create first VPN tunnel (initiating traffic from SOURCE_NETWORK to DESTINATION_NETWORK)
+gcloud compute vpn-tunnels create <TUNNEL_NAME> \
+  --peer-address <STATIC_IP_SECOND_GATEWAY> \
+  --region <REGION_FIRST_GATEWAY_SUBNET> \
+  --ike-version 2 \
+  --shared-secret <SECRET> \
+  --target-vpn-gateway myvpn-1 \
+  --local-traffic-selector 0.0.0.0/0 \
+  --remote-traffic-selector 0.0.0.0/0
+
+# Create second VPN tunnel (initiating traffic from DESTINATION_NETWORK to SOURCE_NETWORK)
+gcloud compute vpn-tunnels create <TUNNEL_NAME_2> \
+  --peer-address <STATIC_IP_FIRST_GATEWAY> \
+  --region <REGION_SECOND_GATEWAY_SUBNET> \
+  --ike-version 2 \
+  --shared-secret <SECRET> \
+  --target-vpn-gateway myvpn-2 \
+  --local-traffic-selector 0.0.0.0/0 \
+  --remote-traffic-selector 0.0.0.0/0
+```
