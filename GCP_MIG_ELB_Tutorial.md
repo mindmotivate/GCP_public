@@ -1,4 +1,32 @@
-# MIG/LB Outline
+# Load Balancers In GCP: 
+A load balancer is a device or software that distributes network or application traffic across multiple servers to ensure no single server becomes overwhelmed.
+Load balancers play a critical role in maintaining the efficiency and reliability of web services and applications by managing traffic flow and ensuring high availability
+
+## Features:
+Even distribution of incoming traffic: Load balancers distribute incoming requests evenly across multiple servers to prevent any single server from becoming a bottleneck.
+Reduction of server overload: By distributing the load, servers can handle requests more efficiently, leading to faster response times and improved user experience.
+Health Monitoring: Regular health checks of virtual instances: Load balancers periodically check the health of servers to ensure they are capable of handling requests.
+Automatic removal and replacement of unhealthy instances: If a server fails a health check, the load balancer stops sending traffic to it and may replace it with a new instance.
+
+## Benefits:
+Improved Efficiency: Load balancers ensure that server resources are used efficiently, reducing the need for over-provisioning.
+Enhanced application performance: By preventing any single server from becoming a bottleneck, load balancers improve the overall performance of applications.
+High Availability and Reliability: Load balancers can reroute traffic to healthy servers in case of a server failure, ensuring continuous operation.
+Failover mechanisms: Load balancers provide failover capabilities, which help in maintaining service availability during server failures.
+
+
+## Managed Instance Groups (MIGs)
+Managed Instance Groups are collections of virtual machines (VMs) that are managed as a single entity, allowing for automated instance creation, deletion, and updates.
+Integration with Load Balancers: **MIGs can be integrated with load balancers to automatically manage the instances based on the traffic load and health checks.**
+
+
+
+![image](https://github.com/mindmotivate/GCP_public/assets/130941970/addcf4aa-61b5-4d25-b2ab-e684f9339d47)
+
+![image](https://github.com/mindmotivate/GCP_public/assets/130941970/ad71df09-40fd-4f6b-a2cd-c7b26c4bf3ec)
+
+
+
 
 ## Tutorial: Setting Up Managed Instance Groups with Load Balancer
 
@@ -36,7 +64,7 @@
 
 # Tutorial: Setting Up Managed Instance Groups with Load Balancer
 
-1. **Create a New Project:**
+1. **Create a New Project:(If needed)**
    - Go to Google Cloud Console (console.cloud.google.com).
    - Click on the project dropdown menu at the top.
    - Select "New Project" from the dropdown.
@@ -48,7 +76,7 @@
 2. **Set Up Billing for the Project (if required):** OPTIONAL STEP
    - If prompted, set up billing for the newly created project to enable usage of Google Cloud resources.
 
-3. **Enable Necessary APIs:**
+3. **Enable Necessary APIs:** (a brand new peoject will more than likley require API enabling)
    - Go to "APIs & Services" > "Dashboard" in the Cloud Console.
    - Click on "+ ENABLE APIS AND SERVICES" at the top.
    - Search for "Compute Engine API", "Cloud Load Balancing API", and "Cloud DNS API".
