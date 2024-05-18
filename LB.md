@@ -115,18 +115,6 @@ Port name: http / Port Numbers: 80
 
 After selections have been made click: "Create"
 
-******************
-If you need to create a health check from scrtach follow this criteria:
-
-Go to dashboard and type in: "health check"
-select create health check
-
-Name: load-balancer-health-check
-Scope: regional
-Region: 
-Protocal: TCP / Port: 80
-*****************
-
 
 ## Create Load Balancer (LB)
 
@@ -162,13 +150,57 @@ Note: In Google Cloud Platform (GCP), a proxy-only subnet is a specialized subne
 
 Backend Configuration
 Name: lb-backend
-Description
-Protacal: HTTP
+Description: lb-backend
+Backend Type: Instance group
+Protocal: HTTP
+Named Port: http
+Timeout: 30s
+
+New Backend
+instance group: choose your previoulsy created MIG
 Port: 80
-Ip Address: Ephemral
+Balancing Mode: Utilization
+Maximum Backend Utilization: 80
+Capacity: 100
+
+Health Check:
+prexisting
+
+
+******************
+If you need to create a health check from scrtach follow this criteria:
+
+Go to dashboard and type in: "health check"
+select create health check
+
+Name: load-balancer-health-check
+description: load-balancer-health-check
+Scope: regional
+Region: 
+Protocal: TCP / Port: 80
+Proxy Protocal:  None
+Logs: off
+Health Criteria
+Check Interval: 5
+Timeout: 5
+Healthy: 2
+Unhealthy: 2
+Click "Save" after all selections have been made
+*****************
+
+Logging: remain unchecked
+
+Security
+cloud armour: default-security-policy-for-backend-service
+
+Select "Create"
 
 
 
+Routing Rules
+Mode: simple host and path rule
+
+Review and Finalize
 
 
-
+Click The Equivalent Code BUtton to see TF code
