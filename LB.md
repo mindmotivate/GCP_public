@@ -12,7 +12,26 @@ Let's create an instance template!
 (GCP has some ready made templplates?)
 name: gcp-instance-template
 
+Machine Configuration:
 e2-medium
+
+Network Interface:
+Network: gpc-application-vpc (previously created)
+Subnetwork: us-east1-subnet IPV4 10.1.0.0.24 (previously created)
+
+IP Stack: Ipv4
+
+External IP Address: Ephemeral
+
+Network Service Tier: Premium
+
+Managemnet:
+Automation: Enter your startup script here
+
+After all selections have been made click "Create":
+
+
+
 
 
 ## Managed Instance Groups (MIGs)
@@ -26,6 +45,9 @@ name: gcp-instance-group
 
 instance template: 
 (select the instance template that you previoulsy created)
+
+Location:
+select "single zone"
 
 select a region and a zone for your MIG
 region: us-east1
@@ -55,5 +77,19 @@ Updates during VM Instance Repair
 Port Mapping:
 Send traffic to a NAMED port 
 Port name: http / Port Numbers: 80
+
+After selections have been made click: "Create"
+
+******************
+If you need to create a health check from scrtach follow this criteria:
+
+Go to dashboard and type in: "health check"
+select create health check
+
+Name: load-balancer-health-check
+Scope: regional
+Region: 
+Protocal: TCP / Port: 80
+*****************
 
 
